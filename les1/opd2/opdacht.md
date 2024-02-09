@@ -24,4 +24,4 @@ Maak een PHP-script dat van alle nieuwsartikelen uit de database de titel en de 
 - Gebruik semantisch correcte HTML-elementen.
 
 ## Extra uitdaging
-- Gebruik geen associatieve arrays
+- Gebruik geen associatieve arrays, maar objecten bij het ophalen van de gegevens uit de database.

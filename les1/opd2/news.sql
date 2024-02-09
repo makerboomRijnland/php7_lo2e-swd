@@ -1,25 +1,29 @@
+DROP DATABASE IF EXISTS news;
+CREATE DATABASE news;
+USE news;
+
 CREATE TABLE users (
-  username VARCHAR PRIMARY KEY,      -- unique username
-  password VARCHAR,                  -- password stored in sha-1
-  name VARCHAR                       -- real name
+  username VARCHAR(255) PRIMARY KEY,      -- unique username
+  password VARCHAR(255),                  -- password stored in sha-1
+  name VARCHAR(255)                       -- real name
 );
 
 CREATE TABLE news (
-  id INTEGER PRIMARY KEY,            -- article id
-  title VARCHAR,                     -- title of the article
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,            -- article id
+  title VARCHAR(255),                     -- title of the article
   published INTEGER,                 -- date when the article was published in epoch format
-  tags VARCHAR,                      -- comma separated tags
-  username VARCHAR REFERENCES users, -- user that wrote the article
-  introduction VARCHAR,              -- a introductory paragraph
-  fulltext VARCHAR                   -- the rest of the text
+  tags VARCHAR(255),                      -- comma separated tags
+  username VARCHAR(255) REFERENCES users, -- user that wrote the article
+  introduction TEXT,              -- a introductory paragraph
+  full_text TEXT                  -- the rest of the text
 );
 
 CREATE TABLE comments (
-  id INTEGER PRIMARY KEY,            -- comment id
-  news_id INTEGER REFERENCES news,   -- news item this comment is about
-  username VARCHAR REFERENCES users, -- user that wrote the comment
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,            -- comment id
+  news_id INTEGER REFERENCES news(id),   -- news item this comment is about
+  username VARCHAR(255) REFERENCES users, -- user that wrote the comment
   published INTEGER,                 -- date when news item was published in epoch format
-  text VARCHAR                       -- comment text
+  full_text TEXT                       -- comment text
 );
 
 -- All passwords are 1234 in SHA-1 format

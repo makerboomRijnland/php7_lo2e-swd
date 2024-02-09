@@ -21,6 +21,7 @@
             <p><?php echo $article->introduction; ?></p>
         </article>
 
+    <?php } ?>
 
 </body>
 
